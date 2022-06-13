@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GoodShowActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F1CB50"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:onClick="back"
+                android:background="@drawable/back"
+                />
+
+            <Button
+                android:id="@+id/other"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:onClick="other"
+                android:layout_marginLeft="180dp"
+                android:background="@drawable/other"
+
+                />
+
+            <Button
+                android:id="@+id/more"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:onClick="more"
+                android:background="@drawable/more"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.itzheng.ZhengShopping.utils.MyImageView
+                android:id="@+id/image1_ags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.itzheng.ZhengShopping.utils.MyImageView
+                    android:id="@+id/image2_ags"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    />
+
+                <com.itzheng.ZhengShopping.utils.MyImageView
+                    android:id="@+id/image3_ags"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    />
+                <com.itzheng.ZhengShopping.utils.MyImageView
+                    android:id="@+id/image4_ags"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    />
+                <com.itzheng.ZhengShopping.utils.MyImageView
+                    android:id="@+id/image5_ags"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/price_ags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000"
+                android:textSize="20sp"
+                android:text="TextView" />
+
+
+            <TextView
+                android:id="@+id/detail_ags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/goodCode_ags"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:text="TextView" />
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/car"
+            android:onClick="car"
+            android:text="购物车"
+            android:textColor="@color/white" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btn_color2"
+            android:onClick="nowby"
+            android:text="立即购买"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_color"
+            android:onClick="addcar"
+            android:text="加入购物车"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

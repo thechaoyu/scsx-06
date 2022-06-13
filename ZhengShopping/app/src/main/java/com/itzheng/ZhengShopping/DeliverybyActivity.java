@@ -1,0 +1,16 @@
+package com.itzheng.ZhengShopping;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import ZhengShopping.R;
+
+public class DeliverybyActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_deliveryby);
+    }
+}

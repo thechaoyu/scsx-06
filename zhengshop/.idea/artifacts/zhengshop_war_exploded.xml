@@ -1,0 +1,39 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="zhengshop:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/zhengshop_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="zhengshop" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="activation.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="c3p0-0.9.2-pre5.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-beanutils-1.8.3.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-beanutils-1.9.4.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-collections-3.2.1.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-collections-3.2.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-dbutils-1.4.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-fileupload-1.2.1.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-io-1.4.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-lang-2.5.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-lang-2.6.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-logging-1.1.1.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="commons-pool2-2.3.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="dom4j-1.6.1.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="ezmorph-1.0.6.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="jedis-2.7.0.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="json-lib-2.4-jdk15.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="jstl.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="mail.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="mchange-commons-java-0.2.3.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.28-bin.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="mysql-connector-java-5.1.39-bin.jar" module-name="zhengshop" />
+          <element id="library" level="module" name="standard.jar" module-name="zhengshop" />
+          <element id="library" level="project" name="activation" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="zhengshop/web/Web" />
+    </root>
+  </artifact>
+</component>

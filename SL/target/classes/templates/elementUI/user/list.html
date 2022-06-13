@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <!-- import Vue before Element -->
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <!-- 官网提供的 axios 在线地址 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<div id="app">
+
+    <div style="text-align: center">
+
+        <el-button type="primary"  @click="dialogVisible = true">添加</el-button> <el-button type="primary">批量删除</el-button>
+        <el-divider></el-divider>
+
+        <!-- 列等分靠的是min-width="20%"(不是width) 并且加起来要100%， -->
+        <el-table
+                :data="tableData"
+                style="width: 80%">
+            <el-table-column
+                    prop="id"
+                    label="id"
+                    min-width="20%">
+            </el-table-column>
+            <el-table-column
+                    prop="username"
+                    label="姓名"
+                    min-width="20%">
+            </el-table-column>
+            <el-table-column
+                    prop="email"
+                    label="邮箱"
+                    min-width="20%">
+            </el-table-column>
+            <el-table-column
+                    prop="city"
+                    label="城市"
+                    min-width="20%">
+            </el-table-column>
+            <el-table-column
+                    label="操作"
+                    min-width="20%">
+                <el-button type="danger">删除</el-button>
+                <el-button type="warning">更新</el-button>
+            </el-table-column>
+        </el-table>
+
+        <!-- layout="->" 是让分页插件右对齐 -->
+        <el-pagination
+                layout="-> , prev, pager, next"
+                :total="50">
+        </el-pagination>
+
+    </div>
+
+    <el-dialog
+            title="添加管理员"
+            :visible.sync="dialogVisible"
+            width="30%"
+            :before-close="handleClose">
+
+        <div style="margin: 20px;"></div>
+        <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+            <el-form-item label="名称">
+                <el-input v-model="formLabelAlign.username"></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱">
+                <el-input v-model="formLabelAlign.email"></el-input>
+            </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="handleAdd">确 定</el-button>
+          </span>
+    </el-dialog>
+
+
+</div>
+<style>
+
+    .el-divider{
+        width: 80%;
+        margin: auto;
+        margin-top : 10px;
+    }
+
+    .el-table {
+        color: gray;
+        margin: auto;//让表格在父容器中左右居中
+    }
+
+</style>
+</body>
+<script>
+    new Vue({
+        el:'#app',
+        data() {
+            return {
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄'
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄'
+                }],
+                dialogVisible : false,
+                labelPosition: 'right',
+                formLabelAlign: {
+                    name: '',
+                    region: '',
+                    type: ''
+                }
+            }
+
+        },
+        created: function(){
+            this.init();
+        },
+        methods:{
+            init:function(){
+                console.log(this.tableData);
+                var that=this;
+                //axios.get("https://autumnfish.cn/api/joke")
+                axios.get("http://localhost:8081/vue/sysUserList")
+                    .then(function(response){
+                        console.log(response);
+                        console.log(response.data.data);
+                        console.log(this.tableData);
+                        that.tableData=response.data.data;
+                    },function(err){
+                        console.log(err);
+                    })
+            },
+            handleAdd(){
+                var that=this;
+
+                let url = "http://localhost:8081/sys-user/add";
+                let params = new URLSearchParams();
+                params.append("username",this.formLabelAlign.username);
+                params.append("email",this.formLabelAlign.email);
+
+                axios.post(url,params,{headers : {'Access-Control-Allow-Origin' : '*'}}).then(res => {
+                    that.tableData=res.data.data;
+                    that.dialogVisible = false;
+                }).catch(error => {
+                    console.info(error);
+                });
+
+            },
+            //删除
+            handleDelete:function(id) {
+                console.log(id);
+
+                var that=this;
+
+                let url = "http://localhost:8081/sys-user/delete";
+                let params = new URLSearchParams();
+                params.append("id",id);
+
+                axios.post(url,params,{headers : {'Access-Control-Allow-Origin' : '*'}}).then(res => {
+                    that.tableData=res.data.data;
+                }).catch(error => {
+                    console.info(error);
+                });
+
+
+            },
+            handleClose(done) {
+                this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {});
+            }
+
+        }
+    });
+</script>
+
+</html>
+

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--购物车顶部-->
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_weight="0.3"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:text="消息"
+            android:textColor="#130014"
+            android:textSize="24dp"
+            android:textStyle="bold"
+
+            />
+
+        <View
+            android:layout_width="30dp"
+            android:layout_height="wrap_content" />
+
+        <include layout="@layout/search_item" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.5">
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wuliu1"
+                android:layout_marginRight="7dp"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="交易物流"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/youhui1"
+                android:layout_marginRight="7dp"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="活动优惠"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5">
+        <ListView
+            android:id="@+id/listView_chat1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_weight="0.3">
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:onClick="shouye"
+            app:srcCompat="@drawable/shouye" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:onClick="weitao"
+            app:srcCompat="@drawable/weitao" />
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            app:srcCompat="@drawable/messagey" />
+
+        <ImageButton
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:onClick="gouwuche"
+            app:srcCompat="@drawable/gouwu" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:onClick="wode"
+            app:srcCompat="@drawable/wo" />
+
+    </LinearLayout>
+
+</LinearLayout>

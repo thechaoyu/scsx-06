@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gsm.dao.SysUserDao">
+    <!--定义一段代码段  -->
+    <sql id="cols">
+        id,name,sex,age
+    </sql>
+    <select id="query" resultType="SysUser" parameterType="SysUser">
+        select <include refid="cols"></include> from t_user
+        <where><!-- 有where元素 它后面的第一个and会被mybatis取消掉 -->
+            <if test="name!=null and name!=''">
+                and name like '%${name}%'
+            </if>
+            <if test="sex!=null and sex!=''">
+                and sex = #{sex}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
+</mapper>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表页面</title>
+</head>
+<body>
+
+<div id="app" >
+    <div class="container mt-3">
+
+        <table class="table" id="forForm" >
+            <thead>
+            </thead>
+            <tbody>
+            <tr>
+                <td>用户名</td>
+                <td><input class="form-control" type="input"  v-model="username"></td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td><input class="form-control" type="email" v-model="email"></td>
+            </tr>
+            <tr>
+                <td><input class="btn btn-info" type="reset" value="重置"></td>
+                <td><button class="btn btn-primary" @click="handleAdd">添加</button></td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
+
+        <table class="table" id="forTable" align="left" border="1" width="90%" cellspacing="0" cellpadding="0">
+            <thead>
+            <tr>
+                <th>选择</th><th>id</th><th>用户名</th><th>邮箱</th><th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in tableData" >
+                    <td><input type="checkbox"></td>
+                    <td> {{ item.id }}</td>
+                    <td> {{ item.username }}</td>
+                    <td> {{ item.email }}</td>
+                    <td>
+                        <button class="btn btn-danger" @click='handleDelete(item.id)'>删除</button>
+                        <button class="btn btn-info" @click="">更新</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
+        <div >
+            <div>&nbsp;</div>
+            <ul class="pagination justify-content-end">
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+<!-- 官网提供的 axios 在线地址 -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    /*
+        接口:获取用户列表json
+        请求地址:http://localhost:8081/vue/sysUserList
+        请求方法:get
+        请求参数:无
+        响应内容:用户列表json
+    */
+    var app=new Vue({
+        el:"#app",
+        data:{
+            tableData: [],
+            username : '',
+            email : ''
+
+        },
+        created: function(){
+            this.init();
+        },
+        methods:{
+            init:function(){
+                console.log(this.tableData);
+                var that=this;
+                //axios.get("https://autumnfish.cn/api/joke")
+                axios.get("http://localhost:8081/vue/sysUserList")
+                    .then(function(response){
+                        console.log(response);
+                        console.log(response.data.data);
+                        console.log(this.tableData);
+                        that.tableData=response.data.data;
+                    },function(err){
+                        console.log(err);
+                    })
+            },
+            handleAdd(){
+                var that=this;
+
+                let url = "http://localhost:8081/sys-user/add";
+
+                let params = new URLSearchParams();
+                params.append("username",this.username);
+                params.append("email",this.email);
+
+                axios.post(url,params,{headers : {'Access-Control-Allow-Origin' : '*'}}).then(res => {
+                    that.tableData=res.data.data;
+                }).catch(error => {
+                    console.info(error);
+                });
+
+            },
+            //删除
+            handleDelete:function(id) {
+               console.log(id);
+
+                var that=this;
+
+                let url = "http://localhost:8081/sys-user/delete";
+                let params = new URLSearchParams();
+                params.append("id",id);
+
+                axios.post(url,params,{headers : {'Access-Control-Allow-Origin' : '*'}}).then(res => {
+                    that.tableData=res.data.data;
+                }).catch(error => {
+                    console.info(error);
+                });
+
+
+            }
+
+        }
+    })
+</script>
+
+<style>
+
+    #app {
+        margin-top : 20px;
+    }
+
+    #forTable{
+        margin-top: 20px;
+    }
+
+
+</style>
+</body>
+</html>
+
+
